@@ -1,7 +1,5 @@
 package edu.ticket.logger;
 
-import java.time.LocalDateTime;
-
 public class SystemLogger {
 
     private static SystemLogger instance;
@@ -17,8 +15,6 @@ public class SystemLogger {
     }
 
     public void log(String message) {
-        System.out.println(
-            "[LOG - " + LocalDateTime.now() + "] " + message
-        );
+        System.out.println("[LOG] " + message);
     }
 }
