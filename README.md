@@ -36,7 +36,7 @@ NEW، ASSIGNED، IN_PROGRESS، RESOLVED و CLOSED.
 
 ## 2. نمودار کلاس (Class Diagram)
 
-![Class Diagram](image_gen_e0952d74-bb48-49a2-8ba6-0d488ba2a523_0.png)
+![Class Diagram](/p1.png)
 
 ## بخش (4) تحلیل شی‌گرا (SOLID + PLK + CRP)
 
