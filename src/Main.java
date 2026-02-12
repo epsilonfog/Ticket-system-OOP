@@ -1,15 +1,29 @@
-import edu.ticket.Ticket;
-import edu.ticket.TicketService;
+package edu.ticket;
 
-public class Main {
+import edu.ticket.state.CreatedState;
+import edu.ticket.state.TicketState;
+import edu.ticket.strategy.ResponseStrategy;
 
-    public static void main(String[] args) {
+public class Ticket {
 
-        TicketService ticketService = new TicketService();
+    private TicketState state;
+    private ResponseStrategy responseStrategy;
 
-        // Example 1: Bug reported from web
-        Ticket ticket = new Ticket(1,"WEB", "BUG");
-        ticket.setRequest("I see a very very BAD BUG!");
-        ticketService.handle(ticket);
+    public Ticket(ResponseStrategy responseStrategy) {
+        this.state = new CreatedState();
+        this.responseStrategy = responseStrategy;
+    }
+
+    public void process() {
+        state.handle(this);
+        responseStrategy.sendResponse(this);
+    }
+
+    public void setState(TicketState state) {
+        this.state = state;
+    }
+
+    public String getStateName() {
+        return state.getName();
     }
 }
