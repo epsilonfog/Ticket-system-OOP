@@ -1,60 +1,23 @@
-package edu.ticket;
+import edu.ticket.state.CreatedState;
+import edu.ticket.state.TicketState;
 
 public class Ticket {
-    int id;
-    String status = "NEW";
-    String channel;
-    String type;
-    String request;
-    String response;
 
-    public Ticket(int id,String channel, String type) {
-        this.id = id;
-        this.channel = channel;
-        this.type = type;
+    private TicketState state;
+
+    public Ticket() {
+        this.state = new CreatedState();
     }
 
-    public String getStatus() {
-        return status;
+    public void process() {
+        state.handle(this);
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(TicketState state) {
+        this.state = state;
     }
 
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getRequest() {
-        return request;
-    }
-
-    public void setRequest(String request) {
-        this.request = request;
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
-
-    public int getId() {
-        return this.id;
+    public String getStateName() {
+        return state.getName();
     }
 }
